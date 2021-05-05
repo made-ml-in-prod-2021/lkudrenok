@@ -1,0 +1,24 @@
+2021-05-05 22:08:28,927	INFO	Initializing training pipeline...
+2021-05-05 22:08:28,927	INFO	Training pipeline params: TrainingPipelineParams(input_data_path='data/raw/heart.csv', output_model_path='models/logreg_model.pkl', metric_path='models/logreg_metrics.json', logs_path='logs/logs.txt', splitting_params=SplittingParams(val_size=0.1, random_state=100, shuffle=False), train_params=TrainingParams(model_type='LogisticRegression', model_params={'random_state': 42}), feature_params=FeatureParams(categorical_features=['sex', 'cp', 'restecg', 'exang'], numerical_features=['age', 'trestbps', 'thalach', 'oldpeak', 'slope', 'ca', 'thal'], target_col='target', features_to_drop=['fbs', 'chol']))
+2021-05-05 22:08:28,930	INFO	Loaded data with shape: (303, 14)
+2021-05-05 22:08:28,934	INFO	Data splitted into train with shape (272, 14) and validation with shape (31, 14)
+2021-05-05 22:08:28,941	INFO	Train features shape: (272, 14)
+2021-05-05 22:08:28,948	INFO	Model initialized and fitted
+2021-05-05 22:08:28,956	INFO	Model evaluated; metrics: {'true neg, false pos, false neg, true pos': '18 13 0 0', 'f1_score': 0.0, 'precision': 0.0, 'recall': 0.0, 'accuracy': 0.5806}
+2021-05-05 22:08:28,956	INFO	Model saved into models/logreg_model.pkl
+2021-05-05 22:08:34,849	INFO	Initializing training pipeline...
+2021-05-05 22:08:34,850	INFO	Training pipeline params: TrainingPipelineParams(input_data_path='data/raw/heart.csv', output_model_path='models/rfc_model.pkl', metric_path='models/rfc_metrics.json', logs_path='logs/logs.txt', splitting_params=SplittingParams(val_size=0.15, random_state=100, shuffle=True), train_params=TrainingParams(model_type='RandomForestClassifier', model_params={'random_state': 42, 'n_estimators': 80, 'max_depth': 8}), feature_params=FeatureParams(categorical_features=['sex', 'cp', 'fbs', 'restecg', 'exang'], numerical_features=['age', 'trestbps', 'chol', 'thalach', 'oldpeak', 'slope', 'ca', 'thal'], target_col='target', features_to_drop=None))
+2021-05-05 22:08:34,852	INFO	Loaded data with shape: (303, 14)
+2021-05-05 22:08:34,854	INFO	Data splitted into train with shape (257, 14) and validation with shape (46, 14)
+2021-05-05 22:08:34,861	INFO	Train features shape: (257, 16)
+2021-05-05 22:08:34,957	INFO	Model initialized and fitted
+2021-05-05 22:08:34,972	INFO	Model evaluated; metrics: {'true neg, false pos, false neg, true pos': '21 6 2 17', 'f1_score': 0.8095, 'precision': 0.7391, 'recall': 0.8947, 'accuracy': 0.8261}
+2021-05-05 22:08:34,976	INFO	Model saved into models/rfc_model.pkl
+2021-05-05 22:08:46,593	INFO	Initializing prediction pipeline...
+2021-05-05 22:08:46,593	INFO	Predict pipeline params: PredictPipelineParams(input_model_path='models/rfc_model.pkl', input_data_path='data/to_predict/heart_without_target.csv', output_data_path='data/to_predict/prediction.csv', logs_path='logs/logs.txt', feature_params=FeatureParams(categorical_features=['sex', 'cp', 'fbs', 'restecg', 'exang'], numerical_features=['age', 'trestbps', 'chol', 'thalach', 'oldpeak', 'slope', 'ca', 'thal'], target_col=None, features_to_drop=None))
+2021-05-05 22:08:46,596	INFO	Loaded data with shape: (303, 13)
+2021-05-05 22:08:46,599	INFO	Model loaded from models/rfc_model.pkl
+2021-05-05 22:08:46,599	INFO	Loaded scaler_params: {'min_value': [29.0, 94.0, 126.0, 71.0, 0.0, 0.0, 0.0, 0.0], 'max_value': [77.0, 200.0, 417.0, 202.0, 6.2, 2.0, 4.0, 3.0]}
+2021-05-05 22:08:46,607	INFO	Features shape: (303, 16)
+2021-05-05 22:08:46,618	INFO	Got prediction
+2021-05-05 22:08:46,620	INFO	Prediction saved into data/to_predict/prediction.csv

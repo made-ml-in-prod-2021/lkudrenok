@@ -1,0 +1,32 @@
+input_data_path: 'data/raw/heart.csv'
+output_model_path: 'models/rfc_model.pkl'
+metric_path: 'models/rfc_metrics.json'
+logs_path: 'logs/logs.txt'
+splitting_params:
+  val_size: 0.15
+  random_state: 100
+  shuffle: True
+train_params:
+  model_type: 'RandomForestClassifier'
+  model_params:
+    # model_params may contain any supported params of model_type
+    random_state: 42
+    n_estimators: 80
+    max_depth: 8
+feature_params:
+  categorical_features:
+    - 'sex'
+    - 'cp'
+    - 'fbs'
+    - 'restecg'
+    - 'exang'
+  numerical_features:
+    - 'age'
+    - 'trestbps'
+    - 'chol'
+    - 'thalach'
+    - 'oldpeak'
+    - 'slope'
+    - 'ca'
+    - 'thal'
+  target_col: 'target'

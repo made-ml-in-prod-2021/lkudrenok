@@ -1,0 +1,2 @@
+from ml_project.train_pipeline import train_pipeline
+from ml_project.predict_pipeline import predict_pipeline

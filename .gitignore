@@ -1,0 +1,6 @@
+.idea/
+.pytest_cache/
+
+venv/
+ml_project/__pycache__/
+notebooks/.ipynb_checkpoints

@@ -1,0 +1,35 @@
+name: CI_pylint_pytest
+
+on:
+  push:
+    branches:
+      - homework1
+  pull_request:
+    branches:
+      - homework1
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+
+    - name: Clone repo
+      uses: actions/checkout@v1
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run linter
+      run: |
+        pylint run_pipeline.py ml_project --exit-zero
+
+    - name: Run tests
+      run: |
+        pytest
