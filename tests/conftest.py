@@ -52,14 +52,14 @@ feature_params:
 @pytest.fixture
 def data() -> pd.DataFrame:
     data = pd.DataFrame({
-        'age': np.random.uniform(low=25, high=80, size=TEMP_DATA_SIZE).astype(int),
+        'age': np.random.randint(low=25, high=80, size=TEMP_DATA_SIZE),
         'sex': np.random.choice([0, 1], size=TEMP_DATA_SIZE),
         'cp': np.random.choice([0, 1, 2, 3], size=TEMP_DATA_SIZE),
-        'trestbps': np.random.uniform(low=94, high=200, size=TEMP_DATA_SIZE).astype(int),
-        'chol': np.random.uniform(low=126, high=564, size=TEMP_DATA_SIZE).astype(int),
+        'trestbps': np.random.randint(low=94, high=200, size=TEMP_DATA_SIZE),
+        'chol': np.random.randint(low=126, high=564, size=TEMP_DATA_SIZE),
         'fbs': np.random.choice([0, 1], size=TEMP_DATA_SIZE),
         'restecg': np.random.choice([0, 1, 2], size=TEMP_DATA_SIZE),
-        'thalach': np.random.uniform(low=70, high=210, size=TEMP_DATA_SIZE).astype(int),
+        'thalach': np.random.randint(low=70, high=210, size=TEMP_DATA_SIZE),
         'exang': np.random.choice([0, 1], size=TEMP_DATA_SIZE),
         'oldpeak': np.random.uniform(low=0.0, high=6.2, size=TEMP_DATA_SIZE).round(1),
         'slope': np.random.choice([0, 1, 2], size=TEMP_DATA_SIZE),
