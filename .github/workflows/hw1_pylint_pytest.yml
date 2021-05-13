@@ -1,12 +1,10 @@
-name: CI_pylint_pytest
+name: hw1_pylint_pytest
 
 on:
   push:
-    branches:
-      - homework1
-  pull_request:
-    branches:
-      - homework1
+    paths:
+    - 'ml_project/**'
+    - '.github/workflows/tests.yml'
 
 jobs:
   build:
@@ -23,13 +21,16 @@ jobs:
         python-version: 3.9
 
     - name: Install dependencies
+      working-directory: ./ml_project
       run: |
         pip install -r requirements.txt
 
     - name: Run linter
+      working-directory: ./ml_project
       run: |
         pylint run_pipeline.py ml_project --exit-zero
 
     - name: Run tests
+      working-directory: ./ml_project
       run: |
         pytest
