@@ -4,7 +4,7 @@ on:
   push:
     paths:
     - 'ml_project/**'
-    - '.github/workflows/tests.yml'
+    - '.github/workflows/hw1_pylint_pytest.yml'
 
 jobs:
   build:
