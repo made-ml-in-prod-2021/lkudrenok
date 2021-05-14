@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    env:
+      PATH_TO_MODEL: "models/rfc_model.pkl"
 
     steps:
 
