@@ -1,0 +1,34 @@
+name: hw2_pylint_pytest
+
+on:
+  push:
+    paths:
+    - 'online_inference/**'
+    - '.github/workflows/hw2_pylint_pytest.yml'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+
+    - name: Clone repo
+      uses: actions/checkout@v1
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      working-directory: ./online_inference
+      run: |
+        pip install -r requirements.txt
+    - name: Run linter
+      working-directory: ./online_inference
+      run: |
+        pylint setup.py src --exit-zero
+    - name: Run tests
+      working-directory: ./online_inference
+      run: |
+        pytest
