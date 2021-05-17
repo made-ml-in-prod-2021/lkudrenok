@@ -7,28 +7,8 @@ import numpy as np
 TEMP_DATA_FILENAME = 'temp_heart.csv'
 TEMP_DATA_SIZE = 100
 
+CONFIG_PATH = 'tests/resources/train_config.yml'
 TEMP_TRAIN_CONFIG_FILENAME = 'temp_train_config.yml'
-TEMP_TRAIN_CONFIG_STR = r"""
-input_data_path: '{path}\temp_heart.csv'
-output_model_path: '{path}\temp_model.pkl'
-metric_path: '{path}\temp_metrics.json'
-logs_path: '{path}\temp_logs.txt'
-splitting_params:
-  val_size: 0.3
-  random_state: 101
-train_params:
-  model_type: 'LogisticRegression'
-feature_params:
-  categorical_features:
-    - 'sex'
-    - 'cp'
-  numerical_features:
-    - 'age'
-    - 'trestbps'
-  features_to_drop:
-    - 'fbs'
-  target_col: 'target'
-"""
 
 
 @pytest.fixture
@@ -62,7 +42,7 @@ def data_file(tmpdir, data: pd.DataFrame):
 @pytest.fixture
 def train_config_file(tmpdir):
     fio = tmpdir.join(TEMP_TRAIN_CONFIG_FILENAME)
-    config_str = TEMP_TRAIN_CONFIG_STR.strip().format(path=tmpdir)
+    with open(CONFIG_PATH) as input_stream:
+        config_str = input_stream.read().strip().format(path=tmpdir)
     fio.write_text(config_str, encoding='utf-8')
     return fio
-
