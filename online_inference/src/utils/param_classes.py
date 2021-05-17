@@ -1,16 +1,18 @@
 from dataclasses import dataclass
+from typing import List
 
 import yaml
+from marshmallow_dataclass import class_schema
 
 
 @dataclass
 class FeatureParams:
-    categorical_features: [str]
-    numerical_features: [str]
+    categorical_features: List[str]
+    numerical_features: List[str]
     target_col: str = None
-    features_to_drop: [str] = None
+    features_to_drop: List[str] = None
 
-
+        
 @dataclass
 class SplittingParams:
     val_size: float = 0.2
@@ -35,19 +37,10 @@ class TrainingPipelineParams:
     feature_params: FeatureParams
 
 
-@dataclass
-class PredictPipelineParams:
-    input_model_path: str
-    input_data_path: str
-    output_data_path: str
-    logs_path: str
-    feature_params: FeatureParams
+TrainingPipelineParamsSchema = class_schema(TrainingPipelineParams)
 
 
 def read_training_pipeline_params(path: str) -> TrainingPipelineParams:
     with open(path, 'r', encoding='utf-8') as input_stream:
-        config = yaml.safe_load(input_stream)
-        config['splitting_params'] = SplittingParams(**config['splitting_params'])
-        config['train_params'] = TrainingParams(**config['train_params'])
-        config['feature_params'] = FeatureParams(**config['feature_params'])
-        return TrainingPipelineParams(**config)
+        schema = TrainingPipelineParamsSchema()
+        return schema.load(yaml.safe_load(input_stream))
