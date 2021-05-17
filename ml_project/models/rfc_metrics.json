@@ -1,0 +1,1 @@
+{"true neg, false pos, false neg, true pos": "21 6 2 17", "f1_score": 0.8095, "precision": 0.7391, "recall": 0.8947, "accuracy": 0.8261}
