@@ -27,8 +27,6 @@ def download(output_data_dir: str, n_samples: int):
     data_x[:, 4][data_x[:, 4] < 0] = 0
     data_x[:, 5] += 5
 
-    # data = np.concatenate([data_x, data_y[:, None]], axis=1)
-
     os.makedirs(output_data_dir, exist_ok=True)
 
     columns = ['cat_1', 'cat_2', 'num_3', 'num_4', 'num_5', 'num_6', 'num_7', 'num_8']
