@@ -3,9 +3,9 @@
 docker-compose up
 ~~~
 Потребуется добавить переменные в Admin -> Variables:<br>
-**Key**: data_dir, **Val**: full/path/to/host/data/dir<br>
-**Key**: model_dir, **Val**: relative/path/to/model/dir<br>
-**Key**: transformer_dir, **Val**: relative/path/to/transformer/dir<br>
+**Key**: data_dir, **Val**: full/path/to/host/data/dir -- *полный путь к папке data на локальной машине пользователя (например, C:/Users/username/data)*<br>
+**Key**: model_dir, **Val**: relative/path/to/model/dir -- *относительный путь к папке с моделью, которую пользователь выбирает для использования в предсказаниях (например, data/models/2021-06-15)*<br>
+**Key**: transformer_dir, **Val**: relative/path/to/transformer/dir -- *относительный путь к папке с трансформером (например, data/processed/2021-06-15)*<br>
 
 Потребуется добавить соединение в Admin -> Connections (для FileSensor):<br>
 **Conn Id**: fs_default, **Conn Type**: File (path)<br>
