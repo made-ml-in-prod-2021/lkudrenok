@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: online-inference-resources
+  labels:
+    app: online-inference
+spec:
+  containers:
+    - image: lkudrenok/online-inference:v1
+      name: online-inference
+      ports:
+        - containerPort: 8000
+      resources:
+        requests:
+          memory: "100Mi"
+          cpu: "0.5"
+        limits:
+          memory: "200Mi"
+          cpu: "1"
